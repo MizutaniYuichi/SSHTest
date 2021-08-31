@@ -10,7 +10,7 @@ RUN chmod 660 /etc/ssh/sshd_config
 RUN chmod 664 /etc/passwd /etc/group # to help uid fix
 # RUN /etc/init.d/sshd start
 RUN echo 'root:password' | chpasswd
-RUN ssh-keygen -A
+# RUN ssh-keygen -A
 EXPOSE 22
-CMD ["/usr/sbin/sshd", "-D"]
+CMD ["ssh-keygen-A && /usr/sbin/sshd", "-D"]
 # CMD /sbin/init
