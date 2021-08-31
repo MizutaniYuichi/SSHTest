@@ -1,6 +1,7 @@
-FROM registry.access.redhat.com/ubi8/ubi:latest
-RUN dnf -y install openssh.x86_64 openssh-server.x86_64 openssh-clients.x86_64
+FROM ubuntu:18.04
+RUN apt-get update && apt-get install -y openssh-server
+RUN mkdir /var/run/sshd
 RUN echo 'root:password' | chpasswd
-RUN ssh-keygen -t rsa -N "" -f /etc/ssh/ssh_host_rsa_key
+RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
 EXPOSE 22
 CMD ["usr/sbin/sshd", "-D"]
