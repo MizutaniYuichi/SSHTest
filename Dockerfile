@@ -1,5 +1,5 @@
 FROM centos
-RUN yum -y install initscripts MAKEDEV
+RUN yum -y install initscripts
 RUN yum check
 RUN yum update
 RUN yum -y install openssh-server
