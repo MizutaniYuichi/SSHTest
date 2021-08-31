@@ -1,7 +1,7 @@
 FROM centos
 RUN yum -y install initscripts
 RUN yum check
-RUN yum update
+RUN yum -y update
 RUN yum -y install openssh-server
 RUN sed -ri 's/^#PermitRootLogin yes/PermitRootLogin yes/' /etc/ssh/sshd_config
 RUN sed -ri 's/^UsePAM yes/UsePAM no/' /etc/ssh/ssh_config
